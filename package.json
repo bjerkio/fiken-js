@@ -1,6 +1,6 @@
 {
   "name": "fiken",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Fiken API Client",
   "main": "build/src/index.js",
   "repository": "ssh://git@github.com/bjerkio/fiken-js.git",
