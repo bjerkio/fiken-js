@@ -78,9 +78,9 @@ typings/
 # Next.js build output
 .next
 
-# Nuxt.js build / generate output
-.nuxt
+# Build files
 dist
+build
 
 # Gatsby files
 .cache/
@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# OpenAPI stuff
+openapi-generator-cli.jar
