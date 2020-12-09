@@ -49,7 +49,7 @@ Folio.
 [sdk-doc]: ./docs/
 [banner]: ./.github/fiken-js-logo.png
 [npm]: https://www.npmjs.com/package/fiken
-[build-badge]: https://img.shields.io/github/workflow/status/bjerkio/fiken-js/push
+[build-badge]: https://github.com/bjerkio/fiken-js/workflows/Release/badge.svg
 [codeclimate-badge]: https://img.shields.io/codeclimate/maintainability/bjerkio/fiken-js
 [codeclimate]: https://codeclimate.com/github/bjerkio/fiken-js/maintainability
 [lgtm-badge]: https://img.shields.io/lgtm/alerts/g/bjerkio/fiken-js.svg?logo=lgtm&logoWidth=18
