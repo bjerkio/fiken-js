@@ -39,7 +39,7 @@ tab or issues for more information on current help-needed.
 
 ## Disclaimer
 
-This project is not associated with Folio AS at all. The maintainer works with
+This project is not associated with Folio at all. The maintainer works with
 their platform and have done so for many years. The Folio logo belongs to Folio
 AS. We put it there only so people would know we are speaking of the Folio
 accounting software, owned and provided by the Norwegian registered company
