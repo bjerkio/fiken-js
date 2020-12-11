@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-import fetch from "@adobe/node-fetch-retry";
+import fetch from "node-fetch";
 
 export const BASE_PATH = "https://api.fiken.no/api/v2".replace(/\/+$/, "");
 
@@ -137,7 +137,10 @@ export class Configuration {
     }
 
     get fetchApi(): FetchAPI {
-        return this.configuration.fetchApi || fetch || window.fetch.bind(window);
+        return (
+          this.configuration.fetchApi ||
+          (fetch as unknown as WindowOrWorkerGlobalScope['fetch'])
+        );;
     }
 
     get middleware(): Middleware[] {
