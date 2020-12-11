@@ -23,7 +23,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@adobe/node-fetch-retry": "^1.1.0"
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "@types/jest": "~26.0.3",
@@ -41,7 +41,6 @@
     "tsutils": "~3.17.0",
     "typedoc": "^0.19.2",
     "typedoc-plugin-markdown": "^2.2.16",
-    "@types/adobe__node-fetch-retry": "^1.0.0",
     "typescript": "~3.9.2"
   }
 }

@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-import fetch from "@adobe/node-fetch-retry";
+import fetch from "node-fetch";
 
 export const BASE_PATH = "https://api.fiken.no/api/v2".replace(/\/+$/, "");
 
@@ -114,7 +114,7 @@ export const COLLECTION_FORMATS = {
     pipes: "|",
 };
 
-export type FetchAPI = typeof fetch;
+export type FetchAPI = WindowOrWorkerGlobalScope['fetch'];
 
 export interface ConfigurationParameters {
     basePath?: string; // override base path
@@ -137,7 +137,10 @@ export class Configuration {
     }
 
     get fetchApi(): FetchAPI {
-        return this.configuration.fetchApi || fetch;
+        return (
+          this.configuration.fetchApi ||
+          (fetch as unknown as WindowOrWorkerGlobalScope['fetch'])
+        );;
     }
 
     get middleware(): Middleware[] {
