@@ -39,11 +39,11 @@ tab or issues for more information on current help-needed.
 
 ## Disclaimer
 
-This project is not associated with Folio at all. The maintainer works with
-their platform and have done so for many years. The Folio logo belongs to Folio
-AS. We put it there only so people would know we are speaking of the Folio
+This project is not associated with Fiken at all. The maintainer works with
+their platform and have done so for many years. The Fiken logo belongs to Fiken
+AS. We put it there only so people would know we are speaking of the Fiken
 accounting software, owned and provided by the Norwegian registered company
-Folio.
+Fiken.
 
 [fiken-api]: https://api.fiken.no/api/v2/docs/
 [sdk-doc]: ./docs/
