@@ -4,7 +4,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "importHelpers": true,
+    "importHelpers": false,
     "resolveJsonModule": true,
     "alwaysStrict": true,
     "sourceMap": true,
