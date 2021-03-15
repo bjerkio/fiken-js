@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/bjerkio/fiken-js/compare/v1.0.1...v1.0.2) (2021-03-15)
+
+
+### Bug Fixes
+
+* Remove `tslib` dependency ([#4](https://github.com/bjerkio/fiken-js/issues/4)) ([2e480cd](https://github.com/bjerkio/fiken-js/commit/2e480cdaac2554eaceeb4cb322b8ea393cc21a69)), closes [#3](https://github.com/bjerkio/fiken-js/issues/3)
+
 ## [1.0.1](https://github.com/bjerkio/fiken-js/compare/v1.0.0...v1.0.1) (2020-12-11)
 
 
