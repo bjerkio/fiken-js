@@ -453,6 +453,7 @@
 * [UserinfoToJSON](README.md#userinfotojson)
 * [canConsumeForm](README.md#canconsumeform)
 * [exists](README.md#exists)
+* [getIDFromHeaders](README.md#getidfromheaders)
 * [isBlob](README.md#const-isblob)
 * [mapValues](README.md#mapvalues)
 * [querystring](README.md#querystring)
@@ -3254,6 +3255,39 @@ Name | Type |
 `key` | string |
 
 **Returns:** *boolean*
+
+___
+
+###  getIDFromHeaders
+
+▸ **getIDFromHeaders**(`resp`: Response): *string*
+
+Get ID from `location` header
+
+This function is used to get the ID resources
+created in Folio (where you are redirected
+afterwards).
+
+**`example`** 
+```typescript
+import { getIDFromHeaders } from 'fiken';
+
+...
+
+const res = await fiken.createBankAccountRaw({
+ ...
+});
+
+const id = getIDFromHeaders(res.raw);
+```
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`resp` | Response |
+
+**Returns:** *string*
 
 ___
 
