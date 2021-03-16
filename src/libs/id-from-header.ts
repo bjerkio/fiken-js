@@ -18,12 +18,11 @@
  * const id = getIDFromHeaders(res.raw);
  * ```
  */
-export function getIDFromHeaders(resp: Response): string {
+export function getIDFromHeaders(resp: Response): string | undefined {
+    if (!resp.headers) return;
     const loc = resp.headers.get('location');
-    if (!loc) {
-        throw new Error('location header was not found');
-    }
-
+    if (!loc) return;
+    
     const url = loc.split('/');
     return url.pop();    
 }
