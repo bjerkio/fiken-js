@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/bjerkio/fiken-js/compare/v1.0.2...v1.1.0) (2021-03-16)
+
+
+### Features
+
+* Get ID from headers ([#5](https://github.com/bjerkio/fiken-js/issues/5)) ([29115fc](https://github.com/bjerkio/fiken-js/commit/29115fc9b46792ada73ae308341e987a193f2ca2))
+
 ## [1.0.2](https://github.com/bjerkio/fiken-js/compare/v1.0.1...v1.0.2) (2021-03-15)
 
 
