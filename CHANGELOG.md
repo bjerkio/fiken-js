@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/bjerkio/fiken-js/compare/v1.1.1...v1.1.2) (2021-03-17)
+
+
+### Bug Fixes
+
+* FormData is not defined ([#8](https://github.com/bjerkio/fiken-js/issues/8)) ([45464d3](https://github.com/bjerkio/fiken-js/commit/45464d3d58e677129d4a3dfdd6c3fa7ef5125a5c)), closes [#7](https://github.com/bjerkio/fiken-js/issues/7)
+
 ## [1.1.1](https://github.com/bjerkio/fiken-js/compare/v1.1.0...v1.1.1) (2021-03-16)
 
 
