@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-
+import * as FormData from 'form-data';
 import * as runtime from '../runtime';
 import {
     InboxResult,

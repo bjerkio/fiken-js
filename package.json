@@ -23,6 +23,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
+    "form-data": "^4.0.0",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
