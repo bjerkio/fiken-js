@@ -34,6 +34,7 @@ import {
     SaleResultFromJSON,
     SaleResultToJSON,
 } from '../models';
+import { createReadStream } from 'fs';
 
 export interface AddAttachmentToSaleRequest {
     companySlug: string;
@@ -162,25 +163,18 @@ export class SalesApi extends runtime.BaseAPI {
             }
         }
 
-        const consumes: runtime.Consume[] = [
-            { contentType: 'multipart/form-data' },
-        ];
-        // @ts-ignore: canConsumeForm may be unused
-        const canConsumeForm = runtime.canConsumeForm(consumes);
+        const formParams = new FormData();
 
-        let formParams: { append(param: string, value: any): any };
-        let useForm = false;
-        // use FormData to transmit files using content-type "multipart/form-data"
-        useForm = canConsumeForm;
-        if (useForm) {
-            formParams = new FormData();
+        const { filename, file } = requestParameters;
+
+        formParams.append('filename', filename as any);
+
+        if (typeof file === 'string') {
+          const stream = createReadStream(file);
+          formParams.append('file', stream, filename);
         } else {
-            formParams = new URLSearchParams();
-        }
-
-        if (requestParameters.filename !== undefined) {
-            formParams.append('filename', requestParameters.filename as any);
-        }
+          formParams.append('file', file, filename);
+        } 
 
         if (requestParameters.attachToPayment !== undefined) {
             formParams.append('attachToPayment', requestParameters.attachToPayment as any);
@@ -190,16 +184,12 @@ export class SalesApi extends runtime.BaseAPI {
             formParams.append('attachToSale', requestParameters.attachToSale as any);
         }
 
-        if (requestParameters.file !== undefined) {
-            formParams.append('file', requestParameters.file as any);
-        }
-
         const response = await this.request({
             path: `/companies/{companySlug}/sales/{saleId}/attachments`.replace(`{${"companySlug"}}`, encodeURIComponent(String(requestParameters.companySlug))).replace(`{${"saleId"}}`, encodeURIComponent(String(requestParameters.saleId))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: formParams,
+            formBody: formParams,
         });
 
         return new runtime.VoidApiResponse(response);
@@ -237,36 +227,25 @@ export class SalesApi extends runtime.BaseAPI {
             }
         }
 
-        const consumes: runtime.Consume[] = [
-            { contentType: 'multipart/form-data' },
-        ];
-        // @ts-ignore: canConsumeForm may be unused
-        const canConsumeForm = runtime.canConsumeForm(consumes);
+        const formParams = new FormData();
 
-        let formParams: { append(param: string, value: any): any };
-        let useForm = false;
-        // use FormData to transmit files using content-type "multipart/form-data"
-        useForm = canConsumeForm;
-        if (useForm) {
-            formParams = new FormData();
+        const { filename, file } = requestParameters;
+
+        formParams.append('filename', filename as any);
+
+        if (typeof file === 'string') {
+          const stream = createReadStream(file);
+          formParams.append('file', stream, filename);
         } else {
-            formParams = new URLSearchParams();
-        }
-
-        if (requestParameters.filename !== undefined) {
-            formParams.append('filename', requestParameters.filename as any);
-        }
-
-        if (requestParameters.file !== undefined) {
-            formParams.append('file', requestParameters.file as any);
-        }
+          formParams.append('file', file, filename);
+        } 
 
         const response = await this.request({
             path: `/companies/{companySlug}/sales/drafts/{draftId}/attachments`.replace(`{${"companySlug"}}`, encodeURIComponent(String(requestParameters.companySlug))).replace(`{${"draftId"}}`, encodeURIComponent(String(requestParameters.draftId))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: formParams,
+            formBody: formParams,
         });
 
         return new runtime.VoidApiResponse(response);

@@ -1,6 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import fetch from "node-fetch";
+import * as FormData from 'form-data';
 
 export const BASE_PATH = "https://api.fiken.no/api/v2".replace(/\/+$/, "");
 
@@ -50,11 +51,31 @@ export class BaseAPI {
             // do not handle correctly sometimes.
             url += '?' + this.configuration.queryParamsStringify(context.query);
         }
-        const body = ((typeof FormData !== "undefined" && context.body instanceof FormData) || context.body instanceof URLSearchParams || isBlob(context.body))
-	    ? context.body
-	    : JSON.stringify(context.body);
 
-        const headers = Object.assign({}, this.configuration.headers, context.headers);
+        const isData =
+          (typeof FormData !== 'undefined' &&
+            context.body instanceof FormData) ||
+          context.body instanceof URLSearchParams ||
+          isBlob(context.body);
+
+        let body = isData ? context.body : JSON.stringify(context.body);
+
+        let headers = Object.assign(
+          {},
+          this.configuration.headers,
+          context.headers,
+        );
+
+        if (context.formBody !== undefined) {
+            if (typeof (context.formBody as FormData).getHeaders === 'function') {
+                headers = {
+                  ...headers,
+                  ...(context.formBody as FormData).getHeaders(),
+                };
+            }
+            body = context.formBody;
+        }
+
         const init = {
             method: context.method,
             headers: headers,
@@ -196,12 +217,15 @@ export interface FetchParams {
     init: RequestInit;
 }
 
+export type FormBody = URLSearchParams | FormData;
+
 export interface RequestOpts {
     path: string;
     method: HTTPMethod;
     headers: HTTPHeaders;
     query?: HTTPQuery;
     body?: HTTPBody;
+    formBody?: FormBody
 }
 
 export function exists(json: any, key: string) {
