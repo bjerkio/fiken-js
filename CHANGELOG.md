@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3](https://github.com/bjerkio/fiken-js/compare/v1.1.2...v1.1.3) (2021-03-23)
+
+
+### Bug Fixes
+
+* Uploading issues ([#9](https://github.com/bjerkio/fiken-js/issues/9)) ([0a7808e](https://github.com/bjerkio/fiken-js/commit/0a7808ef3df72582641fcd76deea7c7c85a2ab9c))
+
 ## [1.1.2](https://github.com/bjerkio/fiken-js/compare/v1.1.1...v1.1.2) (2021-03-17)
 
 
