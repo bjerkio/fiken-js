@@ -28,6 +28,7 @@ import {
     OfferFromJSON,
     OfferToJSON,
 } from '../models';
+import { createReadStream } from 'fs';
 
 export interface AddAttachmentToOfferDraftRequest {
     companySlug: string;
@@ -115,32 +116,21 @@ export class OffersApi extends runtime.BaseAPI {
             }
         }
 
-        const consumes: runtime.Consume[] = [
-            { contentType: 'multipart/form-data' },
-        ];
-        // @ts-ignore: canConsumeForm may be unused
-        const canConsumeForm = runtime.canConsumeForm(consumes);
+        const formParams = new FormData();
 
-        let formParams: { append(param: string, value: any): any };
-        let useForm = false;
-        // use FormData to transmit files using content-type "multipart/form-data"
-        useForm = canConsumeForm;
-        if (useForm) {
-            formParams = new FormData();
+        const { filename, file } = requestParameters;
+
+        formParams.append('filename', filename as any);
+
+        if (typeof file === 'string') {
+          const stream = createReadStream(file);
+          formParams.append('file', stream, filename);
         } else {
-            formParams = new URLSearchParams();
-        }
-
-        if (requestParameters.filename !== undefined) {
-            formParams.append('filename', requestParameters.filename as any);
+          formParams.append('file', file, filename);
         }
 
         if (requestParameters.comment !== undefined) {
             formParams.append('comment', requestParameters.comment as any);
-        }
-
-        if (requestParameters.file !== undefined) {
-            formParams.append('file', requestParameters.file as any);
         }
 
         const response = await this.request({
@@ -148,7 +138,7 @@ export class OffersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: formParams,
+            formBody: formParams,
         });
 
         return new runtime.VoidApiResponse(response);
